@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
+import { SearchBar, Header, Divider, Icon} from 'react-native-elements';
 
 import * as Google from 'expo-google-app-auth'
 
@@ -11,7 +12,7 @@ export default class LoginScreen extends Component{
 
         try {
             const result = await Google.logInAsync({
-                androidClientId: "ANDROID-GOOGLE-CONSOLE-KEY",
+                iosClientId: "765738564074-bo03g3hs3mneiiipcqoeaimh3r6np9am.apps.googleusercontent.com",
                 scopes: ['profile', 'email'],
             });
     
@@ -33,10 +34,18 @@ export default class LoginScreen extends Component{
 
     render(){
         return (
-            <View style={styles.container}>
+            <View>
+                <Header
+                    placement="left"
+                    leftComponent={{}}
+                    centerComponent={{ text: 'imDB', style: { fontSize:30, color: '#fff' } }}
+                />
+                <Divider
+                    style={{height: 200, backgroundColor: ''}}
+                />
                 <Button
                     onPress={() => this._signInWithGoogle()}
-                    title="Iniciar sesión con Google"
+                    title="Iniciar sesión con Google para acceder a la App"
                 />
             </View>
         );
